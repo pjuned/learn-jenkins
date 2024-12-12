@@ -5,6 +5,8 @@ pipeline {
             
         }
     }
+
+    //build
     stages {
         stage('Build') {
             steps {
@@ -21,5 +23,21 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+
+    }
+
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        failure { 
+            echo 'this runs when pipelines fails & it is used to send some alerts'
+        }
+        success { 
+            echo 'I will say Hello when pipeline is success'
+        }
+        
+
+        
     }
 }
